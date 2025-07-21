@@ -5,6 +5,7 @@
     --Purple-100: hsl(275, 100%, 97%);
     --Purple-600: hsl(292, 16%, 49%);
     --Purple-950: hsl(292, 42%, 14%);
+    --Purple-hover : hsl(280.82deg 82.91% 54.12%);
 
     --fs-reg: 1rem;
     --fs-xl: 3.5rem;
@@ -45,12 +46,21 @@
         font-weight: var(--fw-reg);
         font-size: var(--fs-reg);
         color: var(--Purple-950);
-        background-image: url(assets/images/background-pattern-desktop.svg);
-        background-repeat: no-repeat;
-        background-position: top;
-        background-attachment: local; 
-        background-size: contain;
         background-color: var(--Purple-100);
+    }
+
+    .background-img{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 350px;
+        background-image: url('/assets/images/background-pattern-desktop.svg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;
+        overflow: hidden;
     }
 
     .container{
@@ -70,6 +80,10 @@
     h1{
         font-weight: var(--fw-xl);
         font-size: var(--fs-xl);
+    }
+
+    .faq-question:hover{
+        color: var(--Purple-hover);
     }
 }
 
@@ -113,24 +127,42 @@
 
     .container :last-child.faq-card-parent p, 
     .container :last-child.faq-card-parent .faq-question{
-        padding-top: 25px;
         padding-bottom: 0px;
-    }
-
-    .faq-answer{
-        display: none;
     }
 
     .btn-deactivate{
         display: none;
     }
 
+    
+    .faq-answer{
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        visibility: hidden; /* importante si queremos que no este accesible para los lectores de pantalla hasta que no se seleccione la pregunta */
+        transition: max-height 0.2s ease, opacity 0.2s ease;
+    } 
+
     .active{
+        max-height: 150px;
+        opacity: 1;
+        visibility: visible;
+
+    }
+
+    .container :last-child.faq-card-parent .active{
+        padding-top: 25px;
+    }
+
+    .active-btn{
         display: block;
     }
 
+    
+
     .faq-answer.active{
         padding-bottom: 25px;
-        display: block;
     }
+
+
 }

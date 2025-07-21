@@ -12,7 +12,7 @@ faQuestion.forEach((faq, index) => faq.addEventListener("click", (event) => {
     const btnMinus = faq.querySelector('.minus');
 
     btnPlus.classList.toggle("btn-deactivate");
-    btnMinus.classList.toggle("active");
+    btnMinus.classList.toggle("active-btn");
 
     if(answer.classList.contains('active')){       
         answer.classList.remove('active');
